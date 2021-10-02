@@ -1,10 +1,9 @@
-import './App.css';
+import './App.scss';
 import Profile from './components/Profile/Profile';
 import users from '../src/db/user.json';
 
 import Statisctics from './components/Statistics/Statistics';
 import statisticalData from '../src/db/statistical-data.json'
-import Section from './components/Statistics/Section';
 
 import FriendList from './components/FriendList/FriendList'
 import friends from '../src/db/friends.json'
@@ -24,7 +23,7 @@ function App() {
         stats={users.stats}
       />
 
-      <Section title="Upload stats"/>
+      {/* <Section title="Upload stats"/> */}
       <Statisctics stats={statisticalData}/>
       <FriendList friends={friends}/>
       <TransactionHistory items={transactions}/>

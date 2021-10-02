@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import s from './Statistics.module.scss'
 
 function Section({ title }) {
     return (
-    <section className="statistics">
-        {title && <h2 className="title">{title}</h2>}
+    <section className={s.title}>
+        {title && <h2>{title}</h2>}
     </section> 
     )
 }

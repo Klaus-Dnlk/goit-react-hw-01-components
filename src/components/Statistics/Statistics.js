@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
 import StatisticItem from './StatisticItem';
+import Section from './Section';
+import s from './Statistics.module.scss'
 
 function Statisctics ({ stats }) {
     return (
-        <section className="statistics">
-            <ul className="stat-list">
+        <section className={s.statistics}>
+            <Section title="Upload stats"/>
+            <ul className={s.statList}>
                 {stats.map(item => (
-                    <li key={item.id}>
+                    <li key={item.id} className={s.statListItem}>
                         <StatisticItem
                             label={item.label}
                             percentage={item.percentage}
