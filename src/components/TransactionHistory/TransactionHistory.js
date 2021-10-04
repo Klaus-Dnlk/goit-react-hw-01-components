@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import TransactionItem from './TransactionItem';
 import s from './TransactionHistory.module.scss'
 
 
@@ -14,24 +13,27 @@ function TransactionHistory ({ items }) {
                 </tr>
             </thead>
             <tbody>
-               {items.map(element => (
-                  <tr key={element.id}>
-                      <TransactionItem
-                        type={element.type}
-                        amount={element.amount}
-                        currency={element.currency}
-                      />
-                  </tr>                      
-               ))}
-            </tbody>         
+                {items.map(element => (
+                    <tr key={element.id} className={s.element}>
+                        <td className={s.td}>{element.type}</td>
+                        <td className={s.td}>{element.amount}</td>
+                        <td className={s.td}>{element.currency}</td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
     )
 }
 
 TransactionHistory.propTypes = {
-    transactions: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired 
-    }))   
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            type: PropTypes.string,
+            amount: PropTypes.string,
+            currency: PropTypes.string
+        })
+    )
 }
 
 

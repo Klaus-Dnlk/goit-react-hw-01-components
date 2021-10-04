@@ -22,9 +22,7 @@ function App() {
         avatar={users.avatar} 
         stats={users.stats}
       />
-
-      {/* <Section title="Upload stats"/> */}
-      <Statisctics stats={statisticalData}/>
+      <Statisctics title="Upload stats" stats={statisticalData}/>
       <FriendList friends={friends}/>
       <TransactionHistory items={transactions}/>
     </div>

@@ -1,31 +1,38 @@
 import PropTypes from 'prop-types';
-import StatisticItem from './StatisticItem';
-import Section from './Section';
 import s from './Statistics.module.scss'
 
-function Statisctics ({ stats }) {
+function Statistics ({ title, stats }) {
     return (
         <section className={s.statistics}>
-            <Section title="Upload stats"/>
+            {title ? <h2 className={s.title}>{title}</h2> : <h2 style={{display: 'none'}}>{title}</h2>}
+
             <ul className={s.statList}>
-                {stats.map(item => (
-                    <li key={item.id} className={s.statListItem}>
-                        <StatisticItem
-                            label={item.label}
-                            percentage={item.percentage}
-                        />
-                    </li>
+                {stats.map(itemStats => (
+                    <li className={s.statListItem} key={itemStats.id} 
+                    style={{backgroundColor:`rgb(${getRandom(0, 255)}, ${getRandom(0, 255)}, ${getRandom(0, 255)})` }}
+                    >
+                        <span className={s.label}>{itemStats.label}</span>
+                        <span className={s.percentage}>{itemStats.percentage}%</span>
+                </li>  
                 ))}
             </ul>
         </section>
     )
 }
 
-Statisctics.propTypes = {
-    stats: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired
+Statistics.propTypes = {
+    title: PropTypes.string,
+    stats: PropTypes.arrayOf(
+        PropTypes.shape({
+        id: PropTypes.string,
+        label: PropTypes.string,
+        percentage: PropTypes.number
     }))
 }
 
+function getRandom(min, max){
+    return Math.ceil(Math.random() * (max - min) + min)
+  }
 
-export default Statisctics;
+
+export default Statistics;
